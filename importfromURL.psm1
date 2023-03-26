@@ -66,7 +66,7 @@ function Import-FromURL {
                 Write-Error $_
             }
         } else {
-            Write-Error "Could not detemine the type of code to import. The URL does not contain any of file extensions: .DLL, .PS1, or .PSM1, or URL is Invalid." -Category InvalidType -RecommendedAction "Please add the -DLL, -Ps1 or -Psm1 parameter to let the function know what file type it is."
+            Write-Error "Could not detemine the type of code to import. The URL does not contain any of file extensions: .DLL, .PS1, or .PSM1, or URL is Invalid. Please add the -DLL, -Ps1 or -Psm1 parameter to let the function know what file type it is." -Category InvalidType
         }
     }
 }
