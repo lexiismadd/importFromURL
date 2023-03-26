@@ -4,6 +4,7 @@ This function, when added to a powershell script, imports a powershell module fr
 
 This function allows for a module or script to be imnported into the current PowerShell scope without storing it on the local computer.
 This script is based on original by Alec McCutcheon : https://github.com/AlecMcCutcheon/ImportFromURL
+
 Modifications from Alec's original code include the addition of credentials and auto-detecting whether the code is a script, module, or DLL based on the URL that is passed to the function.
 
 You can import this function to your scripts using the following one-line command. The function will only remain on the machine as long as the session is active.
