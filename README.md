@@ -20,18 +20,13 @@ Obviously, you can also use this one liner for your own script import.  The modu
 Import-FromURL -URL <URL> [-Credential <credentials>] [-DLL] [-PS1] [-PSM1]
 ```
 
-**-URL** *\<required\>*
-This is the full URL of the PowerShell code or DLL module you wish to import. Make sure to encode the URL correctly (ie, spaces become %20 etc).
+**-URL** *\<required\>* : This is the full URL of the PowerShell code or DLL module you wish to import. Make sure to encode the URL correctly (ie, spaces become %20 etc).
 
-**-Credential** *\<optional\>*
-This is a [PSCredential](https://learn.microsoft.com/en-us/powershell/scripting/learn/deep-dives/add-credentials-to-powershell-functions?view=powershell-5.1) object required to authenticate for downloading/accessing the code/DLL.
+**-Credential** *\<optional\>* : This is a [PSCredential](https://learn.microsoft.com/en-us/powershell/scripting/learn/deep-dives/add-credentials-to-powershell-functions?view=powershell-5.1) object required to authenticate for downloading/accessing the code/DLL.
 
-**-DLL** *\<optional\>*
-Specifies the remote file is to be treated as a DLL file
+**-DLL** *\<optional\>* : Specifies the remote file is to be treated as a DLL file
 
-**-PS1** *\<optional\>*
-Specifies the remote file is to be treated as a PowerShell script
+**-PS1** *\<optional\>* : Specifies the remote file is to be treated as a PowerShell script
 
-**-PSM1** *\<optional\>*
-Specifies the remote file is to be treated as a PowerShell Module
+**-PSM1** *\<optional\>* : Specifies the remote file is to be treated as a PowerShell Module
 
