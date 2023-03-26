@@ -22,8 +22,8 @@ function Import-FromURL {
 
     process {
         if (($URL -as [System.URI]).IsAbsoluteUri -eq $False) {
-            Write-Verbose "URL is Missing http:// or https://" -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true)
-            break
+            Write-Error "URL is Missing http:// or https://" -Category InvalidArgument
+            $PScmdlet.ThrowTerminatingError()
         }
         if ($URL -match ".DLL" -or $DLL -eq $true) {
             try{
@@ -31,8 +31,8 @@ function Import-FromURL {
                 Import-Module ([System.Reflection.Assembly]::Load((Invoke-WebRequest -UseBasicParsing -Uri $URL).content)) -ErrorAction SilentlyContinue > $null
             }catch{
                 Write-Verbose "Import-Module Failed to Import DLL, Make sure the Url is a direct link to the file." -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true)
+                Write-Error $_
             }
-            break
         } elseif ($URL -match ".psm1" -or $Psm1 -eq $true) {
             try{
                 # Get module name without extension
@@ -48,8 +48,8 @@ function Import-FromURL {
                 #New-Module -Name "$($ModuleName)" -ScriptBlock {$ImportedCode.Content} -ErrorAction SilentlyContinue > $null
             }catch{
                 Write-Verbose "Import-Module Failed to Import Psm1 Module, Make sure the Url is a direct link to the raw code" -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true)
+                Write-Error $_
             }
-            break
         } elseif ($URL -match ".ps1" -or $Ps1 -eq $true) {
             try{
                 Write-Verbose "Importing PowerShell script" -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true)
@@ -63,13 +63,11 @@ function Import-FromURL {
                 Write-Verbose "Windows Bug Tip: If a script prompts for UAC and then force closes the Session, Try running the session as admin" -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true)
             } catch {
                 Write-Verbose "Importing script failed, Make sure the Url is a direct link to the raw code" -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true)
+                Write-Error $_
             }
-            break
         } else {
-            Write-Verbose "Could not detemine the type of code to import"  -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true)
+            Write-Error "Could not detemine the type of code to import. The URL does not contain any of file extensions: .DLL, .PS1, or .PSM1, or URL is Invalid." -Category InvalidType -RecommendedAction "Please add the -DLL, -Ps1 or -Psm1 parameter to let the function know what file type it is."
         }
-        Write-Verbose "The URL does not conatin any of file extensions: .DLL, .Ps1, or Psm1, or is Invailed."
-        Write-Verbose "Please add the -DLL, -Ps1 or -Psm1 parameter to let the function know what file type it is."
     }
 }
 
