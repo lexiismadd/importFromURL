@@ -9,10 +9,11 @@ Modifications from Alec's original code include the addition of credentials and 
 You can import this function to your scripts using the following one-line command:
 
 ```
-Import-Module ([System.Reflection.Assembly]::Load((Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/alexisspencer/importFromURL/main/importfromURL.psm1").content))
+New-Module -Name "ImportFromURL" -ScriptBlock ([Scriptblock]::Create((Invoke-WebRequest -Uri "https://raw.githubusercontent.com/alexisspencer/importFromURL/main/importfromURL.psm1" -UseBasicParsing).Content)) | Import-Module
 ```
 
-Obviously, you can also use this one liner for your own script import.  The module in this repo just adds extra errorchecking for your sanity.
+Obviously, you can also use this one liner for your own script import.  
+The module in this repo simply adds credentials, extra errorchecking for your sanity, and autodetection for file types.
 
 
 ## Function usage:
