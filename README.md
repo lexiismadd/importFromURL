@@ -10,3 +10,5 @@ You can import this function to your scripts using the following one-line comman
 ```
 Import-Module ([System.Reflection.Assembly]::Load((Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/alexisspencer/importFromURL/main/importfromURL.psm1").content))
 ```
+
+Obviously, you can also use this one liner for your own script import.  The module in this repo just adds extra errorchecking for your sanity.
