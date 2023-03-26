@@ -7,4 +7,6 @@ This script is based on original by Alec McCutcheon : https://github.com/AlecMcC
 
 You can import this function to your scripts using the following one-line command:
 
-`Import-Module ([System.Reflection.Assembly]::Load((Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/alexisspencer/importFromURL/main/importfromURL.psm1").content))`
+```
+Import-Module ([System.Reflection.Assembly]::Load((Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/alexisspencer/importFromURL/main/importfromURL.psm1").content))
+```
