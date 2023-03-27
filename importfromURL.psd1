@@ -24,10 +24,10 @@ GUID = '948724ce-c010-42c4-bdba-b9c267845e3d'
 Author = 'deeja'
 
 # Company or vendor of this module
-CompanyName = 'Centorrino Technologies'
+CompanyName = ''
 
 # Copyright statement for this module
-Copyright = 'CT'
+Copyright = 'Alexis Spencer'
 
 # Description of the functionality provided by this module
 Description = 'importfromURL module'
